@@ -18,3 +18,17 @@ class Solution:
           grid[0][j] += grid[0][j - 1]
 
     return grid[m - 1][n - 1]
+
+  def mysolution(self,grid: list[list[int]])-> int:
+    m,n=len(grid),len(grid[0])
+    
+    for i in range(m):
+      for j in range(n):
+        if i*j>0:
+          grid[i][j]+=min(grid[i][j-1],grid[i-1][j])
+        elif i>0:
+          grid[i][j]+=grid[i-1][0]
+        elif j>0:
+          grid[i][j]+=grid[0][j-1]
+    
+    return grid[m-1][n-1]

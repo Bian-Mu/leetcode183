@@ -12,3 +12,12 @@ class Solution:
       dp[i] = dp[i - 1] + dp[i - 2]
 
     return dp[n]
+
+  def mysolution(self ,n:int) -> int:
+    Map={0:1,1:1}
+    result=0
+    
+    for i in range(2,n+1):
+      Map[i]=Map[i-1]+Map[i-2]
+    
+    return Map[n]

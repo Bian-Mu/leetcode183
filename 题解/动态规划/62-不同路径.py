@@ -13,3 +13,12 @@ class Solution:
         dp[i][j] = dp[i - 1][j] + dp[i][j - 1]
 
     return dp[-1][-1]
+
+  def mysolution(self, m: int, n: int)-> int:
+    val=[[1] for _ in range(n) for _ in range(m)]
+    
+    for i in range(1,m):
+      for j in range(1,n):
+        val[i][j]=val[i-1][j]+val[i][j-1]
+    
+    return val[m-1][n-1]
