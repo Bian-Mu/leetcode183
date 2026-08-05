@@ -23,3 +23,18 @@ class Solution:
       ans = max(ans, dpMax)
 
     return ans
+
+  def mysolution(self, nums: list[int])->int:
+    tmpBig=nums[0]
+    tmpSmall=nums[0]
+    ans=nums[0]
+    
+    for i in range(1,len(nums)):
+      big=max(nums[i],tmpBig*nums[i],tmpSmall*nums[i])
+      small=min(nums[i],tmpBig*nums[i],tmpSmall*nums[i])
+      tmpBig=big
+      tmpSmall=small
+
+      ans=max(ans,big)
+    
+    return ans
