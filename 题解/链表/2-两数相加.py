@@ -2,6 +2,7 @@
 # Source: https://walkccc.me/LeetCode/problems/2/
 # SPDX-License-Identifier: MIT
 # Copyright (c) 2019-2026 P.-Y. Chen (walkccc)
+from ListNode import ListNode
 
 class Solution:
   def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
