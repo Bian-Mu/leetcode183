@@ -22,3 +22,41 @@ class Solution:
       curr = curr.next
 
     return dummy.next
+
+  def mysolution(self, l1: ListNode|None, l2: ListNode|None)-> ListNode|None:
+    l3=ListNode(0)
+    head=l3
+    carry:int=0
+    
+    while l1 and l2:
+      sum=l1.val+l2.val+carry
+      node=ListNode(sum%10)
+      carry=sum//10
+      
+      l3.next=node
+      l3=l3.next
+      l1=l1.next
+      l2=l2.next
+    
+    while l1:
+      sum=l1.val+carry
+      node=ListNode(sum%10)
+      carry=sum//10
+      
+      l3.next=node
+      l3=l3.next
+      l1=l1.next
+
+    while l2:
+      sum=l2.val+carry
+      node=ListNode(sum%10)
+      carry=sum//10
+      
+      l3.next=node
+      l3=l3.next
+      l2=l2.next
+      
+    if carry:
+      l3.next=ListNode(carry)
+    
+    return head.next
