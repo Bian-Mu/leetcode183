@@ -18,3 +18,19 @@ class Solution:
         r = m
 
     return l
+
+  def mysolution(self, nums: list[int], target:int)->int:
+    left,right=0,len(nums)
+    # 插入到末尾
+    
+    while left<right:
+      mid=(left+right)//2
+      
+      if nums[mid]==target:
+        return mid
+      elif nums[mid]>target:
+        right=mid
+      else:
+        left=mid+1
+    
+    return left
