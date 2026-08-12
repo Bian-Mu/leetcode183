@@ -11,3 +11,13 @@ class Solution:
       if target - num in numToIndex:
         return numToIndex[target - num], i
       numToIndex[num] = i
+
+  def mysolution(self, nums: list[int], target:int)->list[int]:
+    meet={}
+    
+    for index,num in enumerate(nums):
+      if target-num in meet:
+        return [meet[target-num],index]
+      meet[num]=index
+    
+    return [-1,-1]

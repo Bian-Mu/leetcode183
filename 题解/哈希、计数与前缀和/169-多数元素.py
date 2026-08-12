@@ -14,3 +14,17 @@ class Solution:
       count += (1 if num == ans else -1)
 
     return ans
+
+  def mysolution(self, nums: list[int])->int:
+    result=0
+    cnt=0
+    
+    for num in nums:
+      if not cnt:
+        result=num
+        cnt=1
+      elif num==result:
+        cnt+=1
+      else:
+        cnt-=1
+    return result

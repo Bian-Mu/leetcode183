@@ -18,3 +18,18 @@ class Solution:
         ans.append(maxQ[0])
 
     return ans
+
+  def mysolution(self, nums: list[int], k:int)-> list[int]:
+    maxQ=[]
+    result=[]
+    
+    for i,num in enumerate(nums):
+      while maxQ and num>maxQ[-1]:
+        maxQ.pop()
+      maxQ.append(num)
+      if i>=k-1:
+        if i>=k and nums[i-k]==maxQ[0]:
+          maxQ.pop(0)
+        result.append(maxQ[0])
+      
+    return result

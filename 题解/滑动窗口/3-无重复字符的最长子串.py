@@ -17,3 +17,17 @@ class Solution:
       ans = max(ans, r - l + 1)
 
     return ans
+
+  def mysolution(self, s:str)->int:
+    length=0
+    start=0
+    chars={}
+    
+    for i,char in enumerate(s):
+      if char  in chars:
+        start=max(chars[char]+1,start)
+      
+      chars[char]=i
+      length=max(length,i-start+1)
+    
+    return length
