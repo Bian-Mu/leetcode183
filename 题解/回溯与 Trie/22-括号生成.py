@@ -21,3 +21,24 @@ class Solution:
 
     dfs(n, n, [])
     return ans
+
+  def mysolution(self, n)->list[str]:
+    ans=[]
+    
+    def dfs(chars: list[str],l,r):
+      if l==0 and r==0:
+        ans.append(''.join(chars))
+        return 
+      if l<r:
+        chars.append(')')
+        dfs(chars,l,r-1)
+        chars.pop()
+      if l>0:
+        chars.append('(')
+        dfs(chars,l-1,r)
+        chars.pop()
+        
+      
+    dfs([],n,n)
+    
+    return ans
