@@ -17,3 +17,25 @@ class Solution:
 
     return sum(min(l[i], r[i]) - h
                for i, h in enumerate(height))
+
+  def mysolution(self, height: list[int])->int:
+    l=[0]*len(height)
+    r=[0]*len(height)
+    sum=0
+    
+    for i in range(len(height)):
+      if i==0:
+        l[i]=height[i]
+      else:
+        l[i]=max(l[i-1],height[i])
+        
+    for j in range(len(height)-1,-1,-1):
+      if j==len(height)-1:
+        r[j]=height[j]
+      else:
+        r[j]=max(r[j+1],height[j])
+    
+    for k in range(len(height)):
+      sum+=min(l[k],r[k])-height[k]
+    
+    return sum

@@ -29,3 +29,27 @@ class Solution:
 
     # Reverse nums[i + 1..n - 1].
     reverse(nums, i + 1, len(nums) - 1)
+
+  def mysolution(self, nums: list[int])->None:
+    left,right=-1,-1
+    for i in range(len(nums)-1,0,-1):
+      if nums[i]>nums[i-1]:
+        left=i-1
+        break
+    
+    if left>=0:
+      for i in range(len(nums)-1,left,-1):
+        if nums[i]>nums[left]:
+          right=i
+          break
+      
+      nums[left],nums[right]=nums[right],nums[left]
+    
+    left+=1
+    right=len(nums)-1
+    while left<right:
+      nums[left],nums[right]=nums[right],nums[left]
+      left+=1
+      right-=1
+    
+    return 
