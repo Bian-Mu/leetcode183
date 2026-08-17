@@ -24,3 +24,23 @@ class Solution:
 
     dfs([])
     return ans
+
+  def mysolution(self, nums: list[int])-> list[list[int]]:
+    ans=[]
+    
+    def dfs(index,path):
+      if index==len(nums):
+        ans.append(path.copy())
+        return 
+      
+      for i in range(index,len(nums)):
+        nums[index],nums[i]=nums[i],nums[index]
+        dfs(index+1,nums)
+        nums[index],nums[i]=nums[i],nums[index]
+      
+    dfs(0,nums)
+    
+    return ans
+  
+test=Solution().mysolution([1,2,3])
+print(test)

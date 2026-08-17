@@ -18,3 +18,21 @@ class Solution:
         return False
 
     return not stack
+
+  def mysolution(self, s:str)->bool:
+    stack=[]
+    
+    for ch in s:
+      if ch==')':
+        if not stack or stack.pop()!='(':
+          return False
+      elif ch==']':
+        if not stack or stack.pop()!='[':
+          return False
+      elif ch=='}':
+        if not stack or stack.pop()!='{':
+          return False
+      else:
+        stack.append(ch)
+    
+    return len(stack)==0

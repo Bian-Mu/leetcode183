@@ -54,3 +54,49 @@ class LRUCache:
 
   def remove(self, node: Node):
     self.join(node.prev, node.next)
+
+class MySolution:
+  def __init__(self,capacity:int) -> None:
+    self.capacity=capacity
+    self.head=Node(-1,-1)
+    self.tail=Node(-1,-1)
+    self.connect(self.head,self.tail)
+    self.map={}
+    
+  def connect(self,n1:Node,n2:Node):
+    n1.next=n2
+    n2.prev=n1
+  
+  def get(self,key:int)->int:
+    if key not in self.map:
+      return -1
+    
+    node=self.map[key]
+    self.remove(node)
+    self.addToHead(node)
+    return node.value
+    
+  def put(self,key:int,value:int)-> None:
+    if key in self.map:
+      node=self.map[key]
+      node.value=value
+      self.remove(node)
+      self.addToHead(node)
+      
+    else:
+      node=Node(key,value)
+      self.map[key]=node
+      self.addToHead(node)
+    
+      if len(self.map)>self.capacity:
+        lastNode=self.tail.prev
+        self.connect(lastNode.prev,self.tail)
+        del self.map[lastNode.key]
+  
+  def addToHead(self,node)->None:
+    self.connect(node,self.head.next)
+    self.connect(self.head,node)
+    
+  def remove(self,node)->None:
+    self.connect(node.prev,node.next)
+    

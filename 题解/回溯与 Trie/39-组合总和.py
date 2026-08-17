@@ -23,3 +23,22 @@ class Solution:
     candidates.sort()
     dfs(0, target, [])
     return ans
+
+  def mysolution(self, candidates: list[int], target:int)-> list[list[int]]:
+    ans=[]
+    
+    def dfs(index,path,currTarget):
+      if currTarget<0:
+        return 
+      if currTarget==0:
+        ans.append(path.copy())
+        return 
+      
+      for i in range(index,len(candidates)):
+        path.append(candidates[i])
+        dfs(i,path,currTarget-candidates[i])
+        path.pop()
+    
+    candidates.sort()
+    dfs(0,[],target)
+    return ans

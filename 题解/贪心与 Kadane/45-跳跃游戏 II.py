@@ -20,3 +20,22 @@ class Solution:
         end = farthest  # Make the queue size for the next level.
 
     return ans
+
+  def mysolution(self, nums: list[int])->int:
+    if len(nums)==1:
+      return 0
+    
+    ans=0
+    
+    currMax=0+nums[0]
+    nextMax=0
+    
+    for i,val in enumerate(nums[1:],start=1):
+      
+      if i>currMax:
+        currMax=nextMax
+        ans+=1
+
+      nextMax=max(nextMax,i+val)
+    
+    return ans+1

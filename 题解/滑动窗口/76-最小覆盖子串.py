@@ -25,3 +25,37 @@ class Solution:
         l += 1
 
     return '' if bestLeft == -1 else s[bestLeft: bestLeft + minLength]
+
+  def mysolution(self, s:str, t:str)->str:
+    chars={}
+    for ch in t:
+      chars[ch]=chars.get(ch,0)+1
+    
+    schars={}
+    l=0
+    r=-1
+    bestL= 0
+    bestR= len(s)-1
+    for i,c in enumerate(s):
+      schars[c]=schars.get(c,0)+1
+      
+      r+=1
+      
+      while r-l+1>=len(t) and self.match(schars,chars):
+        if r-l+1<=bestR-bestL+1:
+          bestL=l
+          bestR=r
+        schars[s[l]]-=1
+        l+=1
+    
+    return s[bestL:bestR+1]        
+
+  def match(self,s,t):
+    for key in t:
+      if t.get(key)>s.get(key,0):
+        return False
+    
+    return True
+  
+test=Solution().mysolution('qqwert','wet')
+print(test)

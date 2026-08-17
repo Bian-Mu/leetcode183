@@ -13,3 +13,17 @@ class Solution:
       twos ^= num & ~ones
 
     return ones
+
+  def mysolution(self, nums: list[int])->int:
+    ans=0
+    
+    for i in range(32):
+      bit=0
+      
+      for num in nums:
+        bit+=(num>>i)&1
+      
+      if bit%3:
+        ans+=1<<bit
+    
+    return ans

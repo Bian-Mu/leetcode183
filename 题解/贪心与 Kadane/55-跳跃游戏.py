@@ -13,3 +13,20 @@ class Solution:
       i += 1
 
     return i == len(nums)
+
+  def mysolution(self, nums: list[int])->bool:
+    if len(nums)==1:
+      return True
+    
+    currMax=0+nums[0]
+    
+    for i,val in enumerate(nums[1:],start=1):
+      if i>currMax:
+        return False
+      
+      if currMax>=len(nums)-1:
+        return True
+      
+      currMax=max(currMax,i+val)
+    
+    return False

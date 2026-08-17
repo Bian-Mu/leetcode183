@@ -15,3 +15,21 @@ class Solution:
 
     dfs(0, [])
     return ans
+
+  def mysolution(self, nums: list[int])-> list[list[int]]:
+    ans=[]
+    
+    def dfs(index,path):
+      if index==len(nums):
+        ans.append(path.copy())
+        return 
+      
+      dfs(index+1,path+[nums[index]])
+      dfs(index+1,path)
+    
+    dfs(0,[])
+    
+    return ans
+
+test=Solution().mysolution([1,2,3])
+print(test)
