@@ -18,3 +18,11 @@ class Solution:
       accumulate += c
       if accumulate >= i:
         return i
+
+  def mysolution(self, citations: list[int])->int:
+    citations.sort(reverse=True)
+    h=0
+    for i,citation in enumerate(citations):
+      h=max(h,min(i+1,citation))
+    
+    return h

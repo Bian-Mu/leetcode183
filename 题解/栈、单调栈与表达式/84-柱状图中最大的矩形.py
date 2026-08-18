@@ -16,3 +16,15 @@ class Solution:
       stack.append(i)
 
     return ans
+
+  def mysolution(self, heights: list[int])->int:
+    stack=[]
+    ans=0
+    heights=heights+[0]
+    for i,height in enumerate(heights):
+      while stack and height<heights[stack[-1]]:
+        h=heights[stack.pop()]
+        w=i-stack[-1]-1 if stack else i-0
+        ans=max(ans,w*h)
+      stack.append(i)
+    return ans

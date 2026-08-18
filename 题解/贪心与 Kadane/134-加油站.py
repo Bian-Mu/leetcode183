@@ -18,3 +18,18 @@ class Solution:
         ans = i + 1  # Start from the next index.
 
     return -1 if net < 0 else ans
+
+  def mysolution(self, gas: list[int],cost: list[int])->int:
+    all=sum(gas)-sum(cost)
+    if all<0:
+      return -1
+
+    tmp=0
+    ans=0
+    for i in range(len(gas)):
+      tmp+=gas[i]-cost[i]
+      if tmp<0:
+        ans=i+1
+        tmp=0
+    
+    return ans

@@ -23,3 +23,26 @@ class Solution:
         num = 0
 
     return ans + sign * num
+
+  def mysolution(self, s:str)->int:
+    sign=1
+    num=0
+    ans=0
+    stack=[sign]
+    
+    for ch in s:
+      if ch.isdigit():
+        num=num*10+int(ch)
+      elif ch=='(':
+        stack.append(sign)
+      elif ch==')':
+        stack.pop()
+      elif ch=='+' or ch=='-':
+        ans+=sign*num
+        if ch=='+':
+          sign=1*stack[-1]
+        else:
+          sign=(-1)*stack[-1]
+        num=0
+        
+    return ans+num*sign
